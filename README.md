@@ -3,8 +3,8 @@
 For this assignment, we will be working with a computational fluid flow simulation dataset from the San Diego Supercomputing Center. You can learn more about the science behind the simulation here: http://www.uni-kl.de/sciviscontest/
 
 ## How to run this code?
-1. Run git clone https://github.com/uic-evl/cs529-vds.git
-2. Start an http server (with python3): python -m http.server 8888
+1. Clone this repo 
+2. Start an http server (with python3): py -m http.server 8950
 
 ## Homework 3 - Screenshot
 
