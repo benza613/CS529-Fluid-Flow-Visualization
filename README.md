@@ -5,8 +5,10 @@ For this assignment, we will be working with a computational fluid flow simulati
 ## How to run this code?
 1. Run git clone https://github.com/uic-evl/cs529-vds.git
 2. Start an http server (with python3): python -m http.server 8888
-3. Go to http://localhost:8888. You should see a cylinder wireframe.
-![alt text][img_cylinder]
+
+## Homework 3 - Screenshot
+
+![alt text][img_result_flow]
 
 ## Data
 You can download the complete dataset from [here](https://drive.google.com/file/d/1tzopK6xqQkefopSAw1ik5rXMVCJWS978/view). The base code only includes the 058.csv file.
@@ -17,3 +19,5 @@ You can download the complete dataset from [here](https://drive.google.com/file/
 [Scivis Contest](https://www.uni-kl.de/sciviscontest/)
 
 [img_cylinder]: https://github.com/uic-evl/cs529-vds/blob/master/imgs/cylinder.png "Cylinder"
+
+[img_result_flow]: https://github.com/benza613/CS529-Fluid-Flow-Visualization/blob/master/imgs/result.png "Result"
