@@ -8,6 +8,8 @@ For this assignment, we will be working with a computational fluid flow simulati
 
 ## Homework 3 - Screenshot
 
+You can check it out [live here](https://balvar30.people.uic.edu/flowviz.html)
+
 ![alt text][img_result_flow]
 
 ## Data
