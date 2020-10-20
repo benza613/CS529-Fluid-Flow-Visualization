@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Benito Alvares three.js</title>
+
+    <script src="https://kit.fontawesome.com/24a6855680.js" crossorigin="anonymous"></script>
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- CSS Source -->
+    <link rel="stylesheet" href="./src/css/main.css" />
+
+    <!-- JS Libraries -->
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="lib/js/three.min.js"></script>
+    <script src="lib/js/OrbitControls.js"></script>
+    <script src="lib/js/KeyboardState.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.6/d3.min.js"></script>
+
+    <!-- JS Source -->
+    <script src="./src/js/scene.js"></script>
+    <script src="./src/js/particleSystem.js"></script>
+    <script src="./src/js/main.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            font-family: Recursive, Arial, Helvetica, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .header {
+            padding: 50px;
+            text-align: center;
+            background: #006699;
+            color: white !important;
+        }
+
+        .header h1 {
+            font-size: 40px;
+        }
+
+        .header p a {
+            color: white !important;
+
+        }
+
+        /* Style the nav bar */
+        .navbar1 {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar1 a {
+            float: left;
+            padding: 10px;
+            display: block;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+
+        }
+
+        .navbar1 a.stick-right {
+            float: right;
+        }
+
+        .navbar1 a:hover {
+            background-color: silver;
+            color: black;
+        }
+
+        .helpText li {
+            padding-top: 10px;
+        }
+
+
+
+
+        /* CREDIT: w3 responsive layout https://www.w3schools.com/css/css3_mediaqueries.asp */
+        @media screen and (max-width: 700px) {
+            .row {
+                flex-direction: column;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .navbar1 a {
+                float: none;
+                width: 100%;
+            }
+        }
+
+        .img-responsive {
+            max-width: 90%;
+            object-fit: scale-down;
+        }
+    </style>
+</head>
+
+<body onload="App.start();">
+
+    <div class="header">
+        <h1>Benito Alvares</h1>
+        <p><a href="https://github.com/benza613" target="_blank">Web developer</a> | <a
+                href="https://steamcommunity.com/id/benzalv/" target="_blank">Gamer</a> | Avid Reader | <a
+                href="https://www.linkedin.com/in/benito-alvares/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </p>
+    </div>
+
+
+    <div class="navbar1">
+        <a href="/index.html">Home</a>
+        <a href="/svg.html">SVG</a>
+        <a href="/visual.html">Visualisation</a>
+        <a href="/d3sgd.html">SGD Visualisation</a>
+        <a href="/flowviz.html">Flow Visualisation</a>
+        <a href="/credit.html" class="stick-right">Sources</a>
+    </div>
+
+
+    <div class="container full-height" id="legend3" style="margin-top: 20px;">
+        <div class="row">
+            <div class="particleDiv col-md-6" id="remove" style="border: thin solid #d3d3d3;">
+                <div id="scene"></div>
+            </div>
+            <div class="crossSection col-md-6 d-flex align-items-center justify-content-center"
+                style="border: thin solid #d3d3d3;">
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <div class="btn-group" role="group">
+                    <button type="button" id="moveBehindZFaster" class="btn btn-primary">
+                        &lt;&lt;</button>
+                            <button type="button" id="moveBehindZ" class="btn btn-secondary">
+                                &lt;</button>
+                </div>
+                <p style="margin: 5px">Plane Controls</p>
+                <div class="btn-group" role="group">
+                    <button type="button" id="moveAheadZ" class="btn btn-secondary">></button>
+                    <button type="button" id="moveAheadZFaster" class="btn btn-primary">>></button>
+                </div>
+                &nbsp;
+                &nbsp;
+                <button class="btn btn-danger" id="reset" type="button">Reset</button>
+
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3> How do you use this Visualisation ? </h3>
+                <ol class="helpText">
+                    <li> You can drag either the mouse or your touchpad to rotate the cylinder along its respective axes
+                    </li>
+                    <li> To zoom the cylinder you can use the mouse scroll feature </li>
+                    <li> Also you can use the Left / Right Arrow keys to move the cylinder along the canvas svg </li>
+                    <li> Use the plane controls to move the plan along the Z axis <i>(it might take a while especially
+                            in the middle of the cylinder where points are denser)</i></li>
+                </ol>
+            </div>
+            <div class="col-md-12">
+                Credits / Acknowledgements to 
+                <ol class="helpText">
+                    <li> <a href="https://github.com/mrdoob/three.js/blob/dev/LICENSE">Three js</a>  </li>
+                    <li> <a href="https://github.com/uic-evl/cs529-vds">UIC EVL starter code</a>  </li>
+                    <li> <a href="https://observablehq.com/@d3/scatterplot">Mike Bostock</a>  </li>
+                    
+                </ol>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
